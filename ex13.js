@@ -9,8 +9,24 @@ Create a function named talkingCalendar that takes in a date string with the for
 */
 
 const talkingCalendar = function (date) {
-  // Your code here
+  const months = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+
+  const parts = date.split("/");
+  let year = parts[0];
+  let month = months[parseInt(parts[1]) - 1];
+  let day = parseInt(parts[2]);
+
+  let suffix = "th";
+  if (day === 1 || day === 21 || day === 31) suffix = "st";
+  else if (day === 2 || day === 22) suffix = "nd";
+  else if (day === 3 || day === 23) suffix = "rd";
+
+  return month + " " + day + suffix + ", " + year;
 };
+ 
 
 console.log(talkingCalendar("2017/12/02")); // December 2nd, 2017
 console.log(talkingCalendar("2007/11/11")); // November 11th, 2007
